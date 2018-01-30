@@ -15,8 +15,9 @@
         var i = 0;
         var wrongAccelerometrData = 0;
         var listener = function (event) {
-            console.log(event);
+
             if (Math.abs(event.acceleration.x) < 0.01 && Math.abs(event.acceleration.y) < 0.01 && Math.abs(event.acceleration.y) < 0.01) {
+                console.log(event, i, wrongAccelerometrData);
                 wrongAccelerometrData++;
             } else {
                 console.log('Good');
@@ -25,12 +26,15 @@
 
             if (i == 10) {
                 if (wrongAccelerometrData > 1) {
+                    console.log(event, i, wrongAccelerometrData);
                     alert('Emulator');
                 } else {
+                    console.log(event, i, wrongAccelerometrData);
                     alert('Real device');
                 }
                 window.removeEventListener('devicemotion', listener);
             } else {
+                console.log(event, i, wrongAccelerometrData);
                 i++;
             }
         };
