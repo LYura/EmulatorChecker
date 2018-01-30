@@ -22,12 +22,13 @@
                 console.log('Good');
             }
 
-            if (i == 10 && wrongAccelerometrData > 1) {
-                alert('Emulator');
-            } else {
-                alert('Real device');
-            }
+
             if (i == 10) {
+                if (wrongAccelerometrData > 1) {
+                    alert('Emulator');
+                } else {
+                    alert('Real device');
+                }
                 window.removeEventListener('devicemotion', listener);
             } else {
                 i++;
