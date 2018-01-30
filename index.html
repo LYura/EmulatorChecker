@@ -16,13 +16,16 @@
         var wrongAccelerometrData = 0;
         var listener = function (event) {
 
+            if (!event.acceleration.x || !event.acceleration.y || !event.acceleration.z) {
+                window.removeEventListener('devicemotion', listener);
+                alert("Can't check!!!");
+            }
             if (Math.abs(event.acceleration.x) < 0.01 && Math.abs(event.acceleration.y) < 0.01 && Math.abs(event.acceleration.y) < 0.01) {
                 console.log(event, i, wrongAccelerometrData);
                 wrongAccelerometrData++;
             } else {
                 console.log('Good');
             }
-
 
             if (i == 10) {
                 if (wrongAccelerometrData > 1) {
@@ -33,7 +36,7 @@
                     alert('Real device');
                 }
                 window.removeEventListener('devicemotion', listener);
-            } 
+            }
             i++;
         };
         window.addEventListener('devicemotion', listener);
