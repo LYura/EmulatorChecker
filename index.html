@@ -15,6 +15,7 @@
         var i = 0;
         var wrongAccelerometrData = 0;
         var listener = function (event) {
+            console.log(event);
             if (Math.abs(event.acceleration.x) < 0.01 && Math.abs(event.acceleration.y) < 0.01 && Math.abs(event.acceleration.y) < 0.01) {
                 wrongAccelerometrData++;
             } else {
