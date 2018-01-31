@@ -20,7 +20,7 @@
                 window.removeEventListener('devicemotion', listener);
                 alert("Can't check!!!");
             }
-            if (Math.abs(event.acceleration.x) < 0.002 && Math.abs(event.acceleration.y) < 0.002 && Math.abs(event.acceleration.y) < 0.002) {
+            if (Math.abs(event.accelerationIncludingGravity.x) < 0.002 || Math.abs(event.accelerationIncludingGravity.y) < 0.002 || Math.abs(event.accelerationIncludingGravity.y) < 0.002) {
                 console.log(event, i, wrongAccelerometrData);
                 wrongAccelerometrData++;
             } else {
