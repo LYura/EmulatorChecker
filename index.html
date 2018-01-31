@@ -16,7 +16,7 @@
         var wrongAccelerometrData = 0;
         var listener = function (event) {
 
-            if (!event.acceleration.x || !event.acceleration.y || !event.acceleration.z) {
+            if (event.acceleration.x !== null || event.acceleration.y !== null || event.acceleration.z !== null) {
                 window.removeEventListener('devicemotion', listener);
                 alert("Can't check!!!");
             }
