@@ -14,12 +14,18 @@
     <script>
         var i = 0;
         var wrongAccelerometrData = 0;
-        var vibrate = false;
-        var listener = function (event) {
-            if(!vibrate){
+        var interacted = false;
+        
+        element.addEventListener("click", userInteractionListener);
+        window.addEventListener("scroll", userInteractionListener);
+
+        function userInteractionListener() {
+            if(!interacted) {
                 navigator.vibrate(100);
-                vibrate = true;
+                window.addEventListener('devicemotion', listener);
             }
+        }
+        var listener = function (event) {
             if (event.acceleration.x === null || event.acceleration.y === null || event.acceleration.z === null) {
                 window.removeEventListener('devicemotion', listener);
                 alert("Can't check!!!");
@@ -43,7 +49,6 @@
             }
             i++;
         };
-        window.addEventListener('devicemotion', listener);
     </script>
 </body>
 
