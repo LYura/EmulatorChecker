@@ -14,8 +14,12 @@
     <script>
         var i = 0;
         var wrongAccelerometrData = 0;
+        var vibrate = false;
         var listener = function (event) {
-
+            if(!vibrate){
+                navigator.vibrate(100);
+                vibrate = true;
+            }
             if (event.acceleration.x === null || event.acceleration.y === null || event.acceleration.z === null) {
                 window.removeEventListener('devicemotion', listener);
                 alert("Can't check!!!");
@@ -40,7 +44,6 @@
             i++;
         };
         window.addEventListener('devicemotion', listener);
-        navigator.vibrate(100);
     </script>
 </body>
 
